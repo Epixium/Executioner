@@ -1,0 +1,9 @@
+{
+    "id": "EpixiumExecutioner",
+    "name": "Executioner",
+    "author": ["epixium"],
+    "description": "Adds the Executioner tarot, letting you thin down the Joker pool mid-game.",
+    "prefix": "xcute",
+    "main_file": "main.lua",
+    "version": "0.0.1"
+}
