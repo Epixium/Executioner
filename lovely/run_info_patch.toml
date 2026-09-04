@@ -1,0 +1,22 @@
+[manifest]
+version = "1.0.0"
+priority = 0
+
+# add executed jokers tab to run info
+[[patches]]
+[patches.pattern]
+target = 'functions/UI_definitions.lua'
+pattern = '''
+{
+    label = localize('b_vouchers'),
+    tab_definition_function = G.UIDEF.used_vouchers,
+},
+'''
+position = 'after'
+payload = '''
+{
+    label = localize('xcute_jokers_executed_title'),
+    tab_definition_function = G.UIDEF.xcute_executed_jokers,
+},
+'''
+match_indent = true
