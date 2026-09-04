@@ -5,7 +5,7 @@ SMODS.Joker {
         x = 1,
         y = 0
     },
-    config = { extra = { chips = 9 } },
+    config = { extra = { chips = 13 } },
     rarity = 1,
     cost = 5,
     loc_vars = function(self, info_queue, card)
@@ -24,5 +24,17 @@ SMODS.Joker {
     end,
     in_pool = function(self, args)
         return ExecutionerCurrentMod.config.jokers_enabled
+    end,
+    joker_display_def = function(JokerDisplay)
+        return {
+            text = {
+                { text = "+" },
+                { ref_table = "card.joker_display_values", ref_value = "chips", retrigger_type = "mult" }
+            },
+            text_config = { colour = G.C.CHIPS },
+            calc_function = function(card)
+                card.joker_display_values.chips = card.ability.extra.chips * G.GAME.xcute_executed_joker_count
+            end
+        }
     end
 }

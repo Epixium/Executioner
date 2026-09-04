@@ -9,7 +9,7 @@ end
 function G.UIDEF.xcute_executed_jokers()
 
     local executed_joker_centers = {}
-    for k, v in ipairs(G.P_CENTER_POOLS["Joker"]) do
+    for k, v in ipairs(G.P_CENTER_POOLS.Joker) do
         if G.GAME.xcute_executed_jokers[v.key] then
             executed_joker_centers[#executed_joker_centers+1] = v
         end
@@ -19,9 +19,9 @@ function G.UIDEF.xcute_executed_jokers()
 
     local joker_area = CardArea(
             G.ROOM.T.x + 0.2*G.ROOM.T.w/2, G.ROOM.T.h,
-            math.min(G.GAME.xcute_executed_joker_count * G.CARD_H, G.ROOM.T.w/2),
+            math.min(G.GAME.xcute_executed_joker_count * G.CARD_H * 0.75, G.ROOM.T.w * 0.6),
             1.07*G.CARD_H,
-            {card_limit = G.GAME.xcute_executed_joker_count, type = 'joker', highlighted_limit = 0, no_card_count = true}
+            {card_limit = G.GAME.xcute_executed_joker_count, type = 'joker', unhighlightable = true, no_card_count = true}
         )
     local joker_row = {n=G.UIT.R, config={align = "cm", padding = 0, no_fill = true}, nodes={
         {n=G.UIT.O, config={object = joker_area}}
@@ -29,8 +29,11 @@ function G.UIDEF.xcute_executed_jokers()
 
     for k, v in ipairs(executed_joker_centers) do
         local center = G.P_CENTERS[v.key]
-        local card = Card(joker_area.T.x + joker_area.T.w/2, joker_area.T.y, G.CARD_W, G.CARD_H, nil, center, {bypass_discovery_center=true,bypass_discovery_ui=true,bypass_lock=true})
+        local card = Card(joker_area.T.x + joker_area.T.w/2, joker_area.T.y, G.CARD_W, G.CARD_H, nil, center, {no_ui=true,bypass_discovery_center=true,bypass_discovery_ui=true,bypass_lock=true})
         card.ability.order = v.order
+        if card.children.use_button then card.children.use_button:remove(); card.children.use_button = nil end
+        if card.children.select_button then card.children.select_button:remove(); card.children.select_button = nil end
+        if card.children.sell_button then card.children.sell_button:remove(); card.children.sell_button = nil end
         card:start_materialize(nil, silent)
         silent = true
         joker_area:emplace(card)

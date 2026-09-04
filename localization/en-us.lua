@@ -13,7 +13,9 @@ return {
                 name = "Paper Shredder",
                 text = {
                     "Jokers are {C:attention}executed{}",
-                    "after being {C:attention}sold{}"
+                    "after being {C:attention}sold{}",
+                    "Gains {C:money}$#1#{} of {C:attention}sell value{} for",
+                    "each Joker executed"
                 }
             },  
             j_xcute_graveyard = {

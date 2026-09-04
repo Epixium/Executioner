@@ -1,0 +1,16 @@
+[manifest]
+version = "1.0.0"
+priority = 0
+
+# add executed jokers tab to run info
+[[patches]]
+[patches.pattern]
+target = 'cardarea.lua'
+pattern = '''
+function CardArea:can_highlight(card)
+'''
+position = 'after'
+payload = '''
+if self.config.unhighlightable then return false end
+'''
+match_indent = true
