@@ -25,7 +25,7 @@ SMODS.Consumable {
         x = 0,
         y = 0
     },
-    config = { extra = { max = 50 } },
+    config = { extra = { max = 30, money = 0, money_per = 5 } },
     set = 'Tarot',
     select_card = 'consumeables',
     loc_vars = function(self, info_queue, card)
@@ -43,9 +43,9 @@ SMODS.Consumable {
                 money = money + card_list[i].sell_cost
             end
         end
-        card.ability.extra.money = money * 2
+        card.ability.extra.money = math.min(card.ability.extra.max, money * card.ability.extra.money_per)
 
-        return { vars = { card.ability.extra.money } }
+        return { vars = { card.ability.extra.money_per, card.ability.extra.max, card.ability.extra.money } }
 
     end,
     use = function(self, card, area, copier)
@@ -63,7 +63,7 @@ SMODS.Consumable {
                 money = money + card_list[i].sell_cost
             end
         end
-        card.ability.extra.money = money * 2
+        card.ability.extra.money = math.min(card.ability.extra.max, money * card.ability.extra.money_per)
 
         G.E_MANAGER:add_event(Event({
             trigger = 'after',
@@ -91,6 +91,6 @@ SMODS.Consumable {
 
     end,
     can_use = function(self, card)
-        return #booster_joker_list() > 0 or (G.shop_jokers and #G.shop_jokers.cards > 0)
+        return #booster_joker_list() > 0 or (G.shop_jokers and G.shop_jokers.cards and (#G.shop_jokers.cards > 0))
     end
 }

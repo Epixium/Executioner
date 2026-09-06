@@ -35,6 +35,13 @@ SMODS.Atlas {
     py = 95
 }
 
+SMODS.Atlas {
+    key = 'c_fool',
+    path = 'fools_display.png',
+    px = 71,
+    py = 95
+}
+
 --#endregion
 
 --#region File Loading
@@ -49,6 +56,22 @@ end
 local consumables_src = SMODS.NFS.getDirectoryItems(SMODS.current_mod.path .. "src/consumables")
 for _, file in ipairs(consumables_src) do
     assert(SMODS.load_file("src/consumables/" .. file))()
+end
+
+if next(SMODS.find_mod("FoolsDisplay")) then
+    SMODS.DrawStep {
+        key = 'xcute',
+        order = 102,
+        func = function(card, _)
+            if card.ability.name == "The Fool" then
+                if G.GAME.last_tarot_planet == "c_xcute_executioner" then
+                    card.children.center.atlas = G.ASSET_ATLAS["xcute_c_fool"]
+                    card.children.center.sprite_pos = G.P_CENTERS[G.GAME.last_tarot_planet].pos
+                end
+            end
+        end,
+        conditions = { vortex = false, facing = 'front' },
+    }
 end
 
 --#endregion

@@ -4,7 +4,7 @@ return {
             j_xcute_undertaker = {
                 name = "Undertaker",
                 text = {
-                    "{C:chips}+#1#{} chips per Joker",
+                    "{C:chips}+#1#{} Chips per Joker",
                     "{C:attention}executed{} this run",
                     "{C:inactive}(Currently {C:chips}+#2#{C:inactive})"
                 }
@@ -32,11 +32,11 @@ return {
             c_xcute_executioner = {
                 name = "Executioner",
                 text = {
-                    "{C:attention}Executes{} all Jokers",
-                    "in the shop or {C:attention}Booster Pack{}",
-                    "Gives {C:attention}double{} the total sell",
-                    "value of executed Jokers",
-                    "{C:inactive}(Currently {C:money}$#1#{C:inactive})"
+                    "{C:attention}Executes{} all Jokers in",
+                    "the shop or {C:attention}Booster Pack{}",
+                    "Gives {C:attention}#1#{}x the sell value of",
+                    "executed Jokers {C:inactive}(Max {C:money}$#2#{C:inactive})",
+                    "{C:inactive}(Currently {C:money}$#3#{C:inactive})"
                 }
             }
         },
@@ -55,7 +55,7 @@ return {
         dictionary = {
             xcute_jokers_executed_title = 'Executions',
             xcute_jokers_executed = 'Jokers executed this run',
-            xcute_no_jokers_executed = 'No Jokers executed',
+            xcute_no_jokers_executed = 'No Jokers executed this run',
         }
     }
 }

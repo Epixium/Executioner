@@ -9,5 +9,6 @@
     "prefix": "xcute",
     "main_file": "main.lua",
     "config_file": "config.lua",
-    "version": "0.0.1"
+    "priority": 1,
+    "version": "1.0.0"
 }
