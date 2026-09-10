@@ -6,7 +6,7 @@ return {
                 text = {
                     "{C:chips}+#1#{} Chips per Joker",
                     "{C:attention}executed{} this run",
-                    "{C:inactive}(Currently {C:chips}+#2#{C:inactive})"
+                    "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)"
                 }
             },
             j_xcute_paper_shredder = {
@@ -30,7 +30,7 @@ return {
         },
         Tarot = {
             c_xcute_executioner = {
-                name = "Executioner",
+                name = "The Executioner",
                 text = {
                     "{C:attention}Executes{} all Jokers in",
                     "the shop or {C:attention}Booster Pack{}",
@@ -44,7 +44,7 @@ return {
             xcute_executed = {
                 name = "Executed",
                 text = {
-                    "Will {C:mult}not{} appear",
+                    "Will {C:red}not{} appear",
                     "for the rest",
                     "of the run"
                 },

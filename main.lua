@@ -63,11 +63,11 @@ if next(SMODS.find_mod("FoolsDisplay")) then
         key = 'xcute',
         order = 102,
         func = function(card, _)
-            if card.ability.name == "The Fool" then
+            if card.ability.name == "The Fool" and G.GAME.last_tarot_planet then
                 if G.GAME.last_tarot_planet == "c_xcute_executioner" then
                     card.children.center.atlas = G.ASSET_ATLAS["xcute_c_fool"]
-                    card.children.center.sprite_pos = G.P_CENTERS[G.GAME.last_tarot_planet].pos
                 end
+                card.children.center:set_sprite_pos(G.P_CENTERS[G.GAME.last_tarot_planet].pos)
             end
         end,
         conditions = { vortex = false, facing = 'front' },
