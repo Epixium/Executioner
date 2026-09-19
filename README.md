@@ -16,8 +16,4 @@ A supplemental mod designed to counterbalance the 'bloat' from adding content mo
 
 - Comes with [Fool's Display](https://github.com/dee9c-git/Balatro-FoolsDisplay) support!
 
-<div align="center">
-
-<img alt="jokers" height="150" src="/assets/2x/jokers.png"/>
-
-</div>
+*Also try [Slop Factory](https://github.com/Epixium/SlopFactory)!*
